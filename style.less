@@ -11,12 +11,77 @@ a
     
 }
 
-#lessIntro
+@backgroundColor: #FF33FF;
+@divWidth: 400px;
+@placeHolder: auto;
+@lightUp: 30%;
+
+@factor1: 1.1;
+@factor2: 2;
+
+@color1: #F3F;
+@color2: #A3F;
+
+@tabelWidth:200px;
+
+//Dit is een geparameeterde=() mixin met guard=when
+.lessIntro(@factor, 
+           @backgroundColor, 
+           @divWidth:400px, 
+           @placeHolder: auto, 
+           @passThrough:false) 
+           when ((@factor > 1) 
+           and (@placeHolder = auto)), 
+           (@passThrough)
 {
-    border: 5px solid blue;
-    width: 300px;
-    padding: 2em;
-    background-color: brown;
-    color: red;
-    margin-top: 3em;
+    border: @factor * 0.5em solid lighten(@backgroundColor, @lightUp);
+    width: @factor * @divWidth;
+    padding: @factor * 1em;
+    background-color: @backgroundColor;
+    color: darken(@backgroundColor, 35%);
+    margin: 2em @placeHolder;
+    font-size: @factor * 1.5em;
+    border-radius: 50px;
 }
+
+#div1
+{
+    .lessIntro(@factor1, @color1, 300px, 100px, true);
+}
+#div2
+{
+    .lessIntro(@factor2, @color2, 500px);
+}
+
+@factorOef: 1.0;
+//Dit is een geparameeterde=() mixin met guard=when
+.lessOefening(@tabelWidth)   
+{
+    table
+    {
+         width: @factorOef * @tabelWidth;
+        
+        
+    }
+    border: 0.5em solid lighten(@backgroundColor, 30px);
+   
+    padding: @factorOef * 1em;
+    background-color: @backgroundColor;
+    color: darken(@backgroundColor, 35%);
+    margin: 2em @placeHolder;
+    font-size: @factorOef * 1.5em;
+    border-radius: 50px;
+}
+
+#oefeningDiv1
+{
+    .lessOefening(400px);
+}
+#oefeningDiv2
+{
+    .lessOefening(200px);
+}
+
+
+
+/* Maak een nieuwe pagina die 2 verschillende tabellen laat zien met ieder 5 records. De opmaak van de tabellen moet worden geregeld door dezelfde geparametriseerde LESS mixin met guard. */
