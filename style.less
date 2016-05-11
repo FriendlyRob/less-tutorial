@@ -30,7 +30,7 @@ a
            @divWidth:400px, 
            @placeHolder: auto, 
            @passThrough:false) 
-           when ((@factor > 1) 
+           when ((@factor1 > 1) 
            and (@placeHolder = auto)), 
            (@passThrough)
 {
@@ -53,35 +53,50 @@ a
     .lessIntro(@factor2, @color2, 500px);
 }
 
-@factorOef: 1.0;
+@margin: 2em;
+@border: 2px solid black;
+@borderCollapse: collapse;
 //Dit is een geparameeterde=() mixin met guard=when
-.lessOefening(@tabelWidth)   
+.tblDefault(@margin, @border, @color, @padding, @borderCollapse:collapse)   
 {
-    table
+    border-collapse: @borderCollapse;
+    margin-top: 2em;
+    
+    td
     {
-         width: @factorOef * @tabelWidth;
-        
-        
+        border: @border @color;
+        margin: @margin;
+        padding: @padding;
     }
-    border: 0.5em solid lighten(@backgroundColor, 30px);
-   
-    padding: @factorOef * 1em;
-    background-color: @backgroundColor;
-    color: darken(@backgroundColor, 35%);
-    margin: 2em @placeHolder;
-    font-size: @factorOef * 1.5em;
-    border-radius: 50px;
+    th
+    {
+        border: @border @color;
+        margin: @margin;
+        padding: @padding;
+        background-color: darken(@color, 20%);
+        color: lighten(@color, 20%);
+    }
+    tr:nth-child(2n+1) {
+        background: darken(@color, 10%);
+    }
+    tr:nth-child(2n) {
+        background: lighten(@color, 10%);
+    }
+    
+    
 }
 
 #oefeningDiv1
 {
-    .lessOefening(400px);
+    .tblDefault(2em, 3px solid, green, 1em, collapse);
 }
 #oefeningDiv2
 {
-    .lessOefening(200px);
+    .tblDefault(2em, 3px solid, brown, 1em, collapse);
 }
 
 
 
-/* Maak een nieuwe pagina die 2 verschillende tabellen laat zien met ieder 5 records. De opmaak van de tabellen moet worden geregeld door dezelfde geparametriseerde LESS mixin met guard. */
+/* Maak een nieuwe pagina die 2 verschillende tabellen laat zien met 
+ieder 5 records. De opmaak van de tabellen moet worden geregeld door 
+dezelfde geparametriseerde LESS mixin met guard. */

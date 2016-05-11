@@ -10,8 +10,8 @@
         <div id="oefeningDiv1">
             <table>
                 <tr>
-                    <td>ID</td>
-                    <td>Naam</td>
+                    <th>ID</th>
+                    <th>Naam</th>
                 </tr>
                 <tr>
                     <td>1</td>
@@ -36,7 +36,32 @@
             </table>
         </div>
         <div id="oefeningDiv2">
-            Hier tabel 2
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Naam</th>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>Widowmaker</td>
+                </tr>
+                <tr>
+                    <td>102</td>
+                    <td>Mei</td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>Bastion</td>
+                </tr>
+                <tr>
+                    <td>104</td>
+                    <td>Roadhogg</td>
+                </tr>
+                <tr>
+                    <td>105</td>
+                    <td>Reinhart</td>
+                </tr>
+            </table>
         </div>
 	</body>
 </html>
